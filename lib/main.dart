@@ -49,9 +49,11 @@ class _ToDoListPageState extends State<ToDoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.yellow[100],
       appBar: AppBar(
         title: Text('To Do List', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
+        backgroundColor: Colors.yellow[800],
       ),
       body: Column(
         children: [
@@ -64,12 +66,12 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     controller: _taskController,
                     decoration: InputDecoration(
                       labelText: 'New Task',
-                      labelStyle: TextStyle(color: Colors.yellow[700] ?? Colors.yellow),
+                      labelStyle: TextStyle(color: Colors.black),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.yellow[700] ?? Colors.yellow, width: 2.0),
+                        borderSide: BorderSide(color: Colors.black, width: 2.0),
                       ),
                     ),
                   ),
@@ -77,7 +79,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                 SizedBox(width: 12),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.yellow[700] ?? Colors.yellow,
+                    backgroundColor: Colors.black,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
@@ -88,7 +90,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                       _addTask(_taskController.text);
                     }
                   },
-                  child: Text('Add', style: TextStyle(fontSize: 16, color: Colors.black)),
+                  child: Text('Add', style: TextStyle(fontSize: 16, color: Colors.yellow[100])),
                 ),
               ],
             ),
@@ -119,6 +121,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     child: Icon(Icons.delete, color: Colors.white),
                   ),
                   child: Card(
+                    color: Colors.yellow[800],
                     margin: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
@@ -127,7 +130,8 @@ class _ToDoListPageState extends State<ToDoListPage> {
                     child: ListTile(
                       key: ValueKey(task['text']),
                       leading: Checkbox(
-                        activeColor: Colors.yellow[700] ?? Colors.yellow,
+                        activeColor: Colors.black,
+                        checkColor: Colors.yellow[100],
                         value: task['completed'],
                         onChanged: (value) {
                           _toggleCompletion(index);
@@ -137,6 +141,7 @@ class _ToDoListPageState extends State<ToDoListPage> {
                         task['text'],
                         style: TextStyle(
                           fontSize: 18,
+                          color: Colors.black,
                           decoration: task['completed']
                               ? TextDecoration.lineThrough
                               : TextDecoration.none,
